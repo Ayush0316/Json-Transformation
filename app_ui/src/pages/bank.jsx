@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+const FormData = require('form-data');
 
 var validited_source = false;
 var validited_target = false;
@@ -11,12 +12,17 @@ const Donator = () => {
     mapping: "",
   });
   const handleChange = (e) => {
-    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.files[0] }));
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("source",inputs.source,inputs.source.name);
+    formData.append("source",inputs.mapping,inputs.mapping.name);
     try {
-      await axios.post("/output", inputs).then(
+      await axios.post("/output", formData,{
+        headers: formData.getHeaders ? formData.getHeaders() : { 'Content-Type': 'multipart/form-data' }
+      }).then(
         (response) => { //output as list
           document.querySelector("#target").innerText = JSON.stringify(response.data[0]); //target
           var code = response.data[1];

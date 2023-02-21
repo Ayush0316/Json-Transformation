@@ -1,7 +1,8 @@
-const code_csv = [];
+let code_csv = [];
 
 // This function take mapping file in json format as input and convert the json file line by line into code snippet.
 exports.code_generator = ((data_csv) =>{
+  code_csv = [];
   data_csv.forEach((data) => {
     const target = data.Target;
     const data_source = data[" Source"];
