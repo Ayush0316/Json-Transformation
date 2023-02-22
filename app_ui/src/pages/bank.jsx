@@ -23,10 +23,22 @@ const Donator = () => {
       await axios.post("/output", formData,{
         headers: formData.getHeaders ? formData.getHeaders() : { 'Content-Type': 'multipart/form-data' }
       }).then(
-        (response) => { //output as list
-          document.querySelector("#target").innerText = JSON.stringify(response.data[0]); //target
-          var code = response.data[1];
-          document.querySelector("#map").innerText = code.toString(); //mapping
+        (response) => {
+          let source;
+          var Enumeration = {};
+          let target = {};
+          const file = inputs.source;
+          const reader = new FileReader();
+          reader.addEventListener("load",()=> {
+            source = JSON.parse(new TextDecoder().decode(reader.result));
+            let code = response.data;
+            code.forEach(line => {
+              eval(line);
+            });
+            document.querySelector("#target").innerText = JSON.stringify(target); //target
+            document.querySelector("#map").innerText = code.toString(); //mapping
+          });
+          reader.readAsArrayBuffer(file);
         },
         (error) => {
           console.log(error);
@@ -48,12 +60,6 @@ const Donator = () => {
   };
 
   const fileChange = (e) => {
-    // const file = e.target.files[0];
-    // const reader = new FileReader();
-    // reader.addEventListener("load",()=> {
-    //   console.log(reader.result?.toString())
-    // });
-    // reader.readAsDataURL(file);
     if (e.target.files.length < 1) {
       return;
     }
