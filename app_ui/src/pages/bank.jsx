@@ -32,11 +32,14 @@ const Donator = () => {
           reader.addEventListener("load",()=> {
             source = JSON.parse(new TextDecoder().decode(reader.result));
             let code = response.data;
+            let html = "";
             code.forEach(line => {
               eval(line);
+              html += line.toString() + "<br />"
             });
-            document.querySelector("#target").innerText = JSON.stringify(target); //target
-            document.querySelector("#map").innerText = code.toString(); //mapping
+
+            document.querySelector("#target").innerText = JSON.stringify(target,undefined,2); //target
+            document.querySelector("#map").innerHTML = html; //mapping
           });
           reader.readAsArrayBuffer(file);
         },
@@ -93,7 +96,7 @@ const Donator = () => {
       <div className="continer">
         <div className="about">
           <h2>
-            FOLLOWING MODERN BANKING NEEDS, BANKING PAL is the best solution to get DATA. Get the
+            FOLLOWING MODERN DEVELOPERS NEEDS, BANKING PAL is the best solution to get your JSON TRANSFORMED. Get the
             BEST CODE to transform the DATA ACCORDING to your needs.
             <br />
             FOR THE DEVELOPERS BY THE DEVELOPERS.
