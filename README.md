@@ -13,3 +13,25 @@ If we just want *to get the simple javascript code to convert one json structure
 
 
 
+# SetUP on Local env.
+1. Fork the repo and clone all the files.
+2. Now open a terminal ,run the follwing commands and close this terminal.
+    i) cd JSON-Transformation
+    ii) cd app
+    iii) npm i
+    iv) cd ..
+    v) cd app_ui
+    vi) npm i
+3. Now open 2 diffrent terminals simultaneously.
+4. In First terminal, run the follwing commands.
+   i) cd app
+   ii) node server.js
+5. In Second terminal, run the follwing commands.
+   i) cd app_ui
+   ii) npm start.
+6. Now open your browser and visit localhost:3000.
+###### All done, now you should be able to see the webpage of our website.
+
+
+
+
