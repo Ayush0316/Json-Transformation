@@ -35,3 +35,9 @@ If we just want *to get the simple javascript code to convert one json structure
 
 
 
+# How to use the app.
+1. There are sample source.json and mapping.csv available for you already in json-transformation/app/controllers/uploads.
+2. On your browser under source file add source.json
+3. Under target file add target.csv
+4. Now submit the form.
+5. You should be able to see the generated converting code and target json on your screen.
