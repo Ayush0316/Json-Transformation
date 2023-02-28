@@ -41,3 +41,4 @@ If we just want *to get the simple javascript code to convert one json structure
 3. Under target file add target.csv
 4. Now submit the form.
 5. You should be able to see the generated converting code and target json on your screen.
+### If you just want to get the code needed to transform one Json structured file to other with only mapping.csv then you have to use its API only.
